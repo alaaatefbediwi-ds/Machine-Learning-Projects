@@ -30,6 +30,7 @@ Our team **InnoMinds** developed Career Compass, an AI-powered career guidance a
   - Receive personalized AI-powered recommendations based on their interests and queries.
   - Discover emerging job trends and align their skills with future opportunities.
 Currently, the system implements the Recommendation Engine as the AI core. It acts as both a **Career Matcher** and a **Skill-to-Career Matcher**. Users can type in job roles (e.g., “Data Scientist”), skills (e.g., “Python, SQL”), or even a mix with industries/sectors (e.g., “Machine Learning + Healthcare”).
+
 Then the system then analyzes the query, extracts key skills and context, and returns:
   - **Top 3 most relevant job recommendations** tailored to the query.
   - **Average salary** for each role.
