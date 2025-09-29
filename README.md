@@ -4,8 +4,6 @@
 - [Project Idea & Motivation](#project-idea--motivation)
 - [System Architecture](#system-architecture)
 - [Data Description](#data-description)
-  - [Motor Imagery (MI)](#1-motor-imagery-mi)
-  - [SSVEP](#2-ssvep)
 - [Recommendation Engine](#recommendation-engine)
 - [Database & APIs](#database--apis)
 - [Flutter Mobile Application](#flutter-mobile-application)
@@ -29,9 +27,9 @@ Our team **InnoMinds** developed Career Compass, an AI-powered career guidance a
   - Explore a Jobs Library with responsibilities, required skills, and salary insights.
   - Receive personalized AI-powered recommendations based on their interests and queries.
   - Discover emerging job trends and align their skills with future opportunities.
-Currently, the system implements the Recommendation Engine as the AI core. It acts as both a **Career Matcher** and a **Skill-to-Career Matcher**. Users can type in job roles (e.g., “Data Scientist”), skills (e.g., “Python, SQL”), or even a mix with industries/sectors (e.g., “Machine Learning + Healthcare”).
 
-Then the system then analyzes the query, extracts key skills and context, and returns:
+Currently, the system implements the Recommendation Engine as the AI core. It acts as both a **Career Matcher** and a **Skill-to-Career Matcher**. 
+Users can type in job roles (e.g., “Data Scientist”), skills (e.g., “Python, SQL”), or even a mix with industries/sectors (e.g., “Machine Learning + Healthcare”) then the system then analyzes the query, extracts key skills and context, and returns:
   - **Top 3 most relevant job recommendations** tailored to the query.
   - **Average salary** for each role.
   - **Responsibilities** and tasks associated with the role.
@@ -40,3 +38,58 @@ Then the system then analyzes the query, extracts key skills and context, and re
 This **makes Career Compass not only a job recommendation system but also a skill-driven career exploration tool**, bridging the gap between personal abilities and labor market needs.
 
 
+## Data Description
+
+The **Career Compass system** relies on a curated dataset of jobs, salaries, skills, and responsibilities to power the recommendation engine.
+
+We used the **Job Description Dataset** available on Kaggle: [Job Description Dataset](https://www.kaggle.com/datasets/ravindrasinghrana/job-description-dataset).
+
+- **Shape:** `(1,615,940 rows, 23 columns)`  
+- **Format:** CSV file (`job_descriptions.csv`)
+
+### Loading Dataset
+
+To load it directly in Python, we used `kagglehub`:
+```markdown
+import kagglehub
+import os
+import pandas as pd
+
+# Download dataset from Kaggle
+path = kagglehub.dataset_download("ravindrasinghrana/job-description-dataset")
+
+print("Path to dataset files:", path)
+print(os.listdir(path))  # View files inside the dataset folder
+
+# Load dataset into a DataFrame
+df = pd.read_csv(path + "/job_descriptions.csv")
+```
+
+### Columns Description
+
+
+| Column Name       | Description                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| **Job Id**        | A unique identifier for each job posting.                                   |
+| **Experience**    | Required or preferred years of experience.                                  |
+| **Qualifications**| Educational qualifications needed.                                          |
+| **Salary Range**  | Range of salaries or compensation offered.                                  |
+| **Location**      | City or area where the job is located.                                      |
+| **Country**       | Country of the job location.                                                |
+| **Latitude**      | Latitude coordinate of the job location.                                    |
+| **Longitude**     | Longitude coordinate of the job location.                                   |
+| **Work Type**     | Type of employment (e.g., full-time, part-time, contract).                  |
+| **Company Size**  | Approximate size of the hiring company.                                     |
+| **Job Posting Date** | Date when the job was posted.                                            |
+| **Preference**    | Special requirements (e.g., Only Male, Only Female, Both).                  |
+| **Contact Person**| Name of recruiter/contact person.                                           |
+| **Contact**       | Contact information for job inquiries.                                      |
+| **Job Title**     | Job title or position being advertised.                                     |
+| **Role**          | Role or category (e.g., software developer, marketing manager).             |
+| **Job Portal**    | Platform/website where the job was posted.                                  |
+| **Job Description** | Detailed description of job responsibilities and requirements.            |
+| **Benefits**      | Benefits offered (e.g., health insurance, retirement plans).                |
+| **Skills**        | Skills required for the job.                                                |
+| **Responsibilities** | Specific duties and responsibilities.                                    |
+| **Company Name**  | Name of the hiring company.                                                 |
+| **Company Profile** | Brief overview of the company’s background and mission.                   |
