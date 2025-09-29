@@ -3,7 +3,7 @@
 
 - [Project Idea & Motivation](#project-idea--motivation)
 - [System Architecture](#system-architecture)
-- [Data Description](#data-description)
+- [Data Description & Preparation Pipeline](#data-description--preparation-pipeline)
 - [Recommendation Engine](#recommendation-engine)
 - [Database & APIs](#database--apis)
 - [Flutter Mobile Application](#flutter-mobile-application)
@@ -38,7 +38,7 @@ Users can type in job roles (e.g., “Data Scientist”), skills (e.g., “Pytho
 This **makes Career Compass not only a job recommendation system but also a skill-driven career exploration tool**, bridging the gap between personal abilities and labor market needs.
 
 
-## Data Description
+## Data Description & Preprocessing Pipeline
 
 The **Career Compass system** relies on a curated dataset of jobs, salaries, skills, and responsibilities to power the recommendation engine.
 
@@ -102,15 +102,30 @@ Here is a Sample preview of the dataset:
 | 398454096642776  | 2 to 12 Years | BCA            | $56K-$116K   | Ashgabat  | Turkmenistan | 38.9697  | 59.5563   | Intern    | 100340       | 2022-12-19      | Female     | Francisco Larsen     | 461-509-4216       | Web Developer                | Frontend Web Developer  | Idealist   | Frontend Web Developers design and implement u...                           | {'Health Insurance, Retirement Plans, Paid Time Off...}                        | HTML, CSS, JavaScript, Frontend frameworks (e.g., React)  | Design and code user interfaces for websites...                              | PNC Financial Services Group | {"Sector":"Financial Services","Industry":"Commercial Banking"} |
 
 
+### Data Cleaning & Preprocessing
+
+To ensure high-quality inputs for our recommendation engine, we performed several data cleaning and preprocessing steps on the original dataset.  
+
+#### 1. Company Profile Parsing & Career Categorization
+
+- The `Company Profile` column contained **JSON-like strings** with details such as **Sector, Industry, Location, Website, CEO** etc.  
+- Some steps are performed:  
+  - Converted string objects into dictionaries using `json.loads()`.  
+  - Handled malformed rows (unescaped quotes in the CEO field) using regex fixes.  
+  - Extracted **Sector** and **Industry** fields into separate columns.  
 
 
+#### 2. Fixing Missing & Corrupted Values in Sector and Industry 
 
+- The `Company Profile` column had **5,478 null values**.  
+So, we followed some steps:  
+  - Checked for duplicate company entries with complete profiles and used them to fill missing values.  
+  - For high-frequency missing companies, applied **manual imputation mapping**:  
+    - *Peter Kiewit Sons → Sector: Construction, Industry: Engineering & Construction*  
+    - *Dunkin' Brands Group, Inc. → Sector: Food & Beverage, Industry: Restaurants*  
+    - *Estée Lauder → Sector: Consumer Goods, Industry: Personal Care & Cosmetics*  
 
-
-
-
-
-
+**Result:** No remaining nulls in `Sector` and `Industry` columns.  
 
 
 
