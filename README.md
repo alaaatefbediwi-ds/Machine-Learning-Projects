@@ -1,7 +1,7 @@
 # Career Compass by InnoMinds Team
 ## Table of Contents
 
-- [Project Idea & Motivation](#project-idea--motivations)
+- [Project Idea & Motivation](#project-idea--motivation)
 - [System Architecture](#system-architecture)
 - [Data Description](#data-description)
   - [Motor Imagery (MI)](#1-motor-imagery-mi)
