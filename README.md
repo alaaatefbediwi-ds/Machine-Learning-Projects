@@ -128,7 +128,52 @@ So, we followed some steps:
 **Result:** No remaining nulls in `Sector` and `Industry` columns.  
 
 
+#### 3. Salary Range Normalization  
+- Original format: as for example `"$59K-$99K"`.  
+- **Preprocessing steps:** 
+  - Removed symbols (`$`, `K`) and split into `Salary_min` and `Salary_max`.  
+  - Computed `Salary_avg` as midpoint.  
+  - Converted salaries to **monthly estimates**:  
+    \[
+    Salary\_monthly = \frac{(Salary\_avg \times 1000 \times 48)}{12}
+    \]  
 
+**Result:** Numerical `Salary_min`, `Salary_max`, `Salary_avg` columns available.  
+
+#### 4. Sector Standardization  
+- Initial dataset had **204 unique sectors** with redundant labels.  
+- Created a **sector mapping dictionary** to unify similar categories.  
+  - Example: `"Information Technology"`, `"IT Services"`, `"Technology and Engineering"` → **Technology**.  
+  - Example: `"Construction & Engineering"`, `"Industrial"`, `"Semiconductors"` → **Engineering**.  
+- After standardization: **79 unique sectors** are remained.  
+
+**Result:** Canonicalized sector labels for consistent use in recommendation engine.  
+
+
+#### 5. Job Title & Salary Aggregation  
+- Chose `Job Title` (147 unique values) as the primary label instead of `Role` for recommendation.  
+- **Aggregated salaries** across `Job Title`, `Sector`, and `Role` using a pivot table (mean min/max/avg salaries).  
+
+**Result:** Clean salary distribution by `Job Title`.  
+
+
+#### 6. Text Processing for Recommendation Model  
+- Created a unified **job_text** column by concatenating:  
+  `Job Title + Sector + Role + Job Description + Skills + Responsibilities`  
+- Applied text preprocessing:  
+  - Lowercasing  
+  - Removing punctuation & extra spaces  
+  - Stop word removal   
+- Including `Sector` in `job_text` column that was then embedded using the embedding model helped refining user query to be more specific.
+
+**Result:** Clean textual representation of each job posting.  
+
+
+#### 7. Final Dataset for Embedding Model  
+- Deduplicated job postings based on (`Job Title`, `Sector`, `Role`, `job_text_clean`).  
+- Final dataset shape: **(9,496 rows × 37 columns)**  
+
+**Result:** A clean, well-structured dataset ready for **embedding generation** and recommendation engine training.  
 
 
 
