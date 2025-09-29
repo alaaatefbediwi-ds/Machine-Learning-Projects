@@ -93,3 +93,39 @@ df = pd.read_csv(path + "/job_descriptions.csv")
 | **Responsibilities** | Specific duties and responsibilities.                                    |
 | **Company Name**  | Name of the hiring company.                                                 |
 | **Company Profile** | Brief overview of the company’s background and mission.                   |
+
+Here is a Sample preview of the dataset: 
+
+| Job Id        | Experience     | Qualifications | Salary Range | Location  | Country      | Latitude | Longitude | Work Type | Company Size | Job Posting Date | Preference | Contact Person       | Contact             | Job Title                   | Role                    | Job Portal | Job Description                                                                 | Benefits                                                                             | Skills                                                   | Responsibilities                                                              | Company                     | Company Profile                                               |
+|---------------|----------------|----------------|--------------|-----------|--------------|----------|-----------|-----------|--------------|-----------------|------------|----------------------|--------------------|------------------------------|-------------------------|------------|---------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|----------------------------------------------------------|-----------------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------|
+| 1089843540111562 | 5 to 15 Years | M.Tech         | $59K-$99K    | Douglas   | Isle of Man  | 54.2361  | -4.5481   | Intern    | 26801        | 2022-04-24      | Female     | Brandon Cunningham   | 001-381-930-7517x737 | Digital Marketing Specialist | Social Media Manager    | Snagajob   | Social Media Managers oversee an organization’s...                           | {'Flexible Spending Accounts (FSAs), Relocation...}                               | Social media platforms (e.g., Facebook, Twitter...)        | Manage and grow social media accounts, create...                            | Icahn Enterprises           | {"Sector":"Diversified","Industry":"Diversified"}              |
+| 398454096642776  | 2 to 12 Years | BCA            | $56K-$116K   | Ashgabat  | Turkmenistan | 38.9697  | 59.5563   | Intern    | 100340       | 2022-12-19      | Female     | Francisco Larsen     | 461-509-4216       | Web Developer                | Frontend Web Developer  | Idealist   | Frontend Web Developers design and implement u...                           | {'Health Insurance, Retirement Plans, Paid Time Off...}                        | HTML, CSS, JavaScript, Frontend frameworks (e.g., React)  | Design and code user interfaces for websites...                              | PNC Financial Services Group | {"Sector":"Financial Services","Industry":"Commercial Banking"} |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
