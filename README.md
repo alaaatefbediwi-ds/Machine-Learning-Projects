@@ -293,6 +293,90 @@ np.save("job_embeddings.npy", job_embeddings)
 np.save("enc_order.npy", enc_order)
 ```
 
+
+
+
+## UI/UX Design
+
+### Flow one – Create account  
+![<img width="12750" height="3318" alt="signup" src="https://github.com/user-attachments/assets/5d93f57d-be9d-4902-b1c0-a2e6f31927d2" />]
+1. Splash Screen  
+   - The app opens with a welcoming screen and the button Get Started.
+
+2. Log in Screen  
+   - User can log in or choose to sign up.  
+   - In this flow, the user selects Sign up.
+
+3. Email Entry  
+   - User enters their email address.  
+   - App sends a 5-digit verification code.
+
+4. Email Verification  
+   - User types the code to verify their email.
+
+5. Password Creation  
+   - User sets a password following simple rules:  
+     - Minimum 8 characters  
+     - At least 1 number  
+     - At least 1 symbol  
+
+6. Success Screen  
+   - Message: *“Your account was successfully created!”*  
+   - User can now access the app.
+  
+### Flow Two – User Onboarding Questions  
+![<img width="11808" height="3240" alt="skills" src="https://github.com/user-attachments/assets/fe8fa646-648e-4097-bf5a-4f13c3952922" />]
+
+After creating an account, the user answers a set of  questions.  
+The main goal is to understand their background, interests, and preferences so we can provide personalized career recommendations.  
+
+1. What stage of your learning journey are you in?  
+    Purpose: Identify the user’s current education level (e.g., high school, university) to suggest suitable career paths.  
+
+2. Which industry are you interested in?  
+    Purpose: Understand the industry or field of interest (e.g., software, marketing) to narrow down career options.  
+
+3. What are the top 3 skills you feel most confident in?  
+    Purpose: Capture the user’s strongest skills, which serve as the foundation for career recommendations.  
+
+4. What kind of tasks or activities do you enjoy doing?  
+    Purpose: Discover the type of activities that excite the user, ensuring recommendations align with their passions.  
+
+5. Do you prefer working with people, data, or technology/machines? Please explain.  
+    Purpose: Identify the preferred work environment (social, analytical, or technical) to match suitable roles.  
+
+6. What matters most to you in a career?  
+    Purpose: Understand key priorities (salary, stability, creativity, helping others, growth) to align recommendations with personal values.  
+
+7. If you imagine your future career, how would you describe your ideal role?  
+    Purpose: Capture the user’s vision of their future career and use it as input for tailored suggestions.  
+
+#### User Profile  
+![<img width="4007" height="3270" alt="profile" src="https://github.com/user-attachments/assets/e1d59e16-06c9-44f5-a4e4-6fdac8c26322" />]
+
+#### Account Settings
+- From the navigation, the user can open Account Settings.  
+- Options available:  
+  - Personal Information  
+  - Payment  
+  - Notification  
+  - Privacy  
+
+####  Profile Page
+- The profile displays user details:  
+  - Education (e.g., Preparatory School Student)  
+  - Experience (e.g., school projects, coding activities)  
+  - Skills (coding, problem-solving, creativity, teamwork)  
+
+
+#### Side Menu
+- A slide-out menu gives quick insights and actions:  
+  - 22 profile views  
+  - 10 recommended jobs  
+  -
+
+
+
 ## Business Plan & Sustainability
 
 ### 1. Key Features
