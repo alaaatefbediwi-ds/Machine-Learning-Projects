@@ -293,6 +293,57 @@ np.save("job_embeddings.npy", job_embeddings)
 np.save("enc_order.npy", enc_order)
 ```
 
+## Business Plan & Sustainability
+
+### Key Features
+
+#### Implemented in Current Version
+1. **Skill-to-Career Matcher** – Links students’ existing skills to relevant future job opportunities.  
+2. **AI-Powered Career Recommendations** – Personalized job suggestions based on students’ interests, skills, and personality.  
+
+#### Planned for Future Work
+3. **Comprehensive Jobs Library** – Simple explanations, short videos, responsibilities, and salary insights.  
+4. **Career Simulations & Virtual Try-Outs** – Interactive experiences that allow students to try jobs firsthand.  
+5. **Gamified Career Discovery** – Quizzes and interactive scenarios to make career exploration engaging.  
+6. **Future Job Trends Explorer** – Insights into in-demand and declining careers.  
+7. **IQ & Critical Thinking Hub** – Puzzles, logic challenges, and problem-solving exercises.  
+
+### How Users Will Use the Solution?
+
+#### Current Flow
+1. **Quick Quiz & Recommendations**  
+   - Student provides inputs about their **interests and skills**.  
+   - The AI recommends **3 career paths** tailored to the answers.  
+
+2. **Skill-to-Career Matching**  
+   - Students can directly check which career paths align with their **current skill set**.  
+
+#### Future Enhancements (Planned)
+- Access a **Jobs Library** with videos, responsibilities, and salary insights.  
+- Explore **Trending Jobs** and future job demand.  
+- Participate in **Career Simulations** and connect with **mentors**.  
+- Solve **IQ puzzles & critical thinking challenges** to sharpen problem-solving.  
+
+### Sustainability & Monetization  
+
+We follow a **freemium model** to ensure accessibility while allowing long-term sustainability.  
+
+- **Free Features (already implemented)**  
+  - Skill-to-Career Matcher  
+  - AI-powered Career Recommendations  
+
+- **Premium Features (Planned)**   
+  - Mentorship sessions with professionals  
+  - Career simulations & virtual try-outs  
+  - Access to extended career insights & advanced analytics  
+
+**Revenue Streams:**  
+- **School/University Partnerships** → Institutions adopt the platform for student guidance.  
+- **Corporate Sponsorships** → Companies sponsor career content to connect with future talent.  
+- **Premium Subscriptions (Future)** → Unlock simulations, mentorship, and advanced features.  
+
+This ensures the platform is already **useful today** with AI-driven recommendations, while maintaining a **clear roadmap for future expansion** toward a complete career guidance ecosystem.  
+ 
 
 ## Contributors 
 
