@@ -195,7 +195,7 @@ flowchart LR
     D --> E[Display Results: 
     Job Title, Role, Sector, Salary, 
     Job Description, Responsibilities]
-
+```
 
 ![Recommendation Engine Workflow](./assets/recommendation_engine_workflow.png)
 
@@ -303,6 +303,124 @@ np.save("job_embeddings.npy", job_embeddings)
 np.save("enc_order.npy", enc_order)
 ```
 
+
+## Database & APIs
+
+### Database Schema
+
+Our system uses a **relational database** to store everything about users, jobs, and their career journey.  
+The schema was designed to be **modular** (easy to extend) and **scalable** (can handle many users and jobs).
+
+
+
+#### Main Components
+
+1. **User Management**  
+   - **users** → Stores basic account info (email, password, verification).  
+   - **otp_codes** → Handles one-time codes for secure email verification.
+
+2. **Onboarding & Profiles**  
+   - **questionnaire** → Stores answers from the onboarding survey (e.g., "I like AI" or "I want a career in healthcare").  
+   - **user_profile** → Keeps detailed personal data like education, work experience, and skills.
+
+3. **Jobs & Recommendations**  
+   - **jobs** → Contains job postings (title, description, skills, responsibilities).  
+   - **user_job_recommendations** → Links each user to jobs the AI thinks are relevant, with a **match score**.
+
+4. **IQ Exams (optional assessments)**  
+   - **iq_exams** → Defines available exams.  
+   - **iq_questions** → Stores exam questions, options, and the correct answers.  
+   - **user_exam_attempts** → Tracks each exam attempt by a user.  
+   - **user_exam_answers** → Records the answers users gave and whether they were correct.
+
+
+
+#### Example Table Structures
+
+- **users**  
+  `user_id (PK), email, password_hash, is_verified, created_at, updated_at`
+
+- **jobs**  
+  `job_id (PK), job_title, job_description, responsibilities, required_skills, created_at`
+
+- **user_job_recommendations**  
+  `user_id (FK), job_id (FK), model_score`
+
+
+
+#### Why This Schema Works
+
+- **Scalable** → Easy to add new modules (e.g., career counseling chatbots, more assessments).  
+- **Flexible** → Keeps onboarding, recommendations, and exams in **separate tables** so they don’t interfere with each other.  
+- **Traceable** → Every user’s profile, recommendations, and exam attempts are stored for long-term analysis.
+
+
+
+### API Implementation
+
+The backend uses **FastAPI** to provide a set of APIs for the mobile app and recommendation engine.  
+This makes the system **fast**, **easy to maintain**, and **cloud-friendly**.
+
+
+
+#### How It Works
+
+1. **User enters a query** (like "I know Python and want a Data Scientist job").  
+2. **API converts the query into an embedding** (vector representation of meaning).  
+3. **FAISS index searches the jobs database** for the closest matches.  
+4. **Top-k recommendations** are returned to the frontend.
+
+
+
+#### Example API Code
+
+```python
+from fastapi import FastAPI
+from pydantic import BaseModel
+from sentence_transformers import SentenceTransformer
+import faiss, numpy as np, pandas as pd
+
+# Load pre-trained model and FAISS index
+model = SentenceTransformer("multi-qa-mpnet-base-dot-v1")
+index = faiss.read_index("jobs.index")
+job_embeddings = np.load("job_embeddings.npy")
+jobs_df = pd.read_csv("trans_df_final.csv")
+
+# FastAPI app
+app = FastAPI(title="Job Recommendation API")
+
+class Query(BaseModel):
+    text: str
+    k: int = 3  # return top 3 recommendations by default
+
+@app.post("/embed")
+def embed(query: Query):
+    """Convert user query to embedding (vector)."""
+    embedding = model.encode([query.text])[0].tolist()
+    return {"embedding": embedding}
+
+@app.post("/recommend")
+def recommend(query: Query):
+    """Return top-k job recommendations."""
+    embedding = model.encode([query.text])
+    distances, indices = index.search(embedding, query.k)
+    results = jobs_df.iloc[indices[0]].to_dict(orient="records")
+    return {"results": results}
+```
+
+### Deployment
+
+The API was deployed using **Cloudflare Tunnel**, which makes the local FastAPI server accessible on the internet **without needing port forwarding** or complicated server setups.
+
+#### Steps
+
+1. Install [Cloudflare Tunnel (cloudflared)](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/).  
+2. Run the following command to expose your local API:
+
+```bash
+"D:\cloudflare\cloudflared-windows-amd64.exe" tunnel --url http://localhost:8000
+
+```
 
 
 
