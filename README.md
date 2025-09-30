@@ -292,6 +292,51 @@ To avoid recomputing embeddings during query time, we saved both:
 np.save("job_embeddings.npy", job_embeddings)
 np.save("enc_order.npy", enc_order)
 ```
+## UI/UX Design
+
+#  Career Compass ( User Flow )
+![<img width="12750" height="3318" alt="signup" src="https://github.com/user-attachments/assets/10493c92-7d97-4cb7-9b0a-61728c8d1fa7" />]
+
+---
+
+##  Sign Up Flow
+
+### 1. Splash Screen
+- User opens the app and sees a welcoming splash screen.  
+- Tap on **Get Started** to continue.
+- 
+### 2. Log in Screen
+- Options: **Log in** or **Sign up**.  
+- New users select **Sign up**.
+- 
+### 3. Email Entry
+- User enters their email address.  
+- App sends a **5-digit verification code**.
+
+### 4. Email Verification
+- User enters the code to confirm their email.
+  
+### 5. Password Creation
+- User sets a password following rules:  
+  - Minimum **8 characters**  
+  - At least **1 number**  
+  - At least **1 symbol**  
+
+### 6. Success Screen 
+- Confirmation: *“Your account was successfully created!”*  
+- User can now access the app.  
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Business Plan & Sustainability
 
