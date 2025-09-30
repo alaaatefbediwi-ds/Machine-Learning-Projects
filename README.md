@@ -8,7 +8,6 @@
 - [Database & APIs](#database--apis)
 - [UI/UX Design](#uiux-design)
 - [Business Plan & Sustainability](#business-plan--sustainability)
-- [Final Predications & Demonstration](#final-predictions--demonstration)
 - [Future Work / Next Steps](#future-work--next-steps)
 - [Contributors](#contributors)
 
@@ -35,6 +34,23 @@ Users can type in job roles (e.g., “Data Scientist”), skills (e.g., “Pytho
   - **Key skills** required to succeed.
 
 This **makes Career Compass not only a job recommendation system but also a skill-driven career exploration tool**, bridging the gap between personal abilities and labor market needs.
+
+
+## System Architecture  
+
+```mermaid
+flowchart LR
+    A[User / Student] --> B[Frontend: Flutter App or Web]
+    B --> C[Backend API: Flask or FastAPI]
+    C --> D[Recommendation Engine]
+    D --> E[Sentence-BERT Embeddings]
+    E --> F[FAISS Index Search]
+    F --> G[Top-k Job Recommendations]
+    G --> H[Results Returned to User]
+
+    C --> I[(Database)]
+    I --> D
+```
 
 
 ## Data Description & Preprocessing Pipeline
@@ -173,23 +189,6 @@ So, we followed some steps:
 - Final dataset shape: **(9,496 rows × 37 columns)**  
 
 **Result:** A clean, well-structured dataset ready for **embedding generation** and recommendation engine training.  
-
-
-## System Architecture  
-
-```mermaid
-flowchart LR
-    A[User / Student] --> B[Frontend: Flutter App or Web]
-    B --> C[Backend API: Flask or FastAPI]
-    C --> D[Recommendation Engine]
-    D --> E[Sentence-BERT Embeddings]
-    E --> F[FAISS Index Search]
-    F --> G[Top-k Job Recommendations]
-    G --> H[Results Returned to User]
-    
-    C --> I[(Database)]
-    I --> D
-
 
 
 
