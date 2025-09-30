@@ -177,9 +177,47 @@ So, we followed some steps:
 
 
 
+## Recommendation Engine
+
+Our project includes a **Skill-to-Career Matcher** recommendation engine.
+
+Users can input queries describing their **skills, interests, or target careers**, and the engine recommends **top-3 most relevant jobs** based on semantic similarity and industry context.  
 
 
 
+### 1. Embedding Generation
+
+- Used **Sentence Transformers** with `multi-qa-mpnet-base-dot-v1`, a retrieval-optimized model.  
+- Encoded the cleaned text representation (`job_text_clean`) of each job posting into dense embeddings.  
+
+```python
+from sentence_transformers import SentenceTransformer
+
+model = SentenceTransformer("multi-qa-mpnet-base-dot-v1")
+job_embeddings = model.encode(
+    trans_df_final['job_text_clean'].tolist(),
+    show_progress_bar=True,
+    convert_to_numpy=True
+)
+```
+**Result:** Each job posting is represented as a **768-dimensional vector**.
+
+### 2. Building FAISS Index
+
+- Used FAISS (Facebook AI Similarity Search) for efficient nearest-neighbor retrieval.
+- Stored all embeddings in a flat L2 index.
+
+**Result:** Fast similarity search enabled for **~9.5K job postings**.
+
+### 3. Prediction Function
+
+Implemented a `predict_top_3(query)` function:
+
+  - Encodes the user’s query into an embedding.
+
+  - Retrieves **top-3 closest jobs** using FAISS.
+
+  - Returns `Job Title`, `Sector`, `Role`, `Aggregated Salary`, `Job Description`, `Responsibilities` and `Distance Score`.
 
 
 
