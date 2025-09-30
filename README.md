@@ -220,9 +220,67 @@ Implemented a `predict_top_3(query)` function:
   - Returns `Job Title`, `Sector`, `Role`, `Aggregated Salary`, `Job Description`, `Responsibilities` and `Distance Score`.
 
 
+### 4. Example Queries
+
+**Query 1:** *“I like designing buildings and interiors, and I’m creative with spaces”*
+
+**Recommendations:**
+- **Architectural Designer** | Sector: *Fashion & Apparel* | Role: *Interior Designer* | Salary ~358K  
+- **Architectural Designer** | Sector: *Media & Entertainment* | Role: *Interior Designer* | Salary ~378K  
+- **Architectural Designer** | Sector: *Mining* | Role: *Interior Designer* | Salary ~302K  
+ 
+Since the query described the **skills of an Architectural Designer in general** without specifying a particular domain, the system returned the **same job title** (*Architectural Designer*) across **different sectors**.
 
 
+**Query 2:** *“I enjoy analyzing data and building predictive models in the healthcare field”*
 
+**Recommendations:**
+- **Data Analyst** | Sector: *Healthcare Services* | Role: *Data Scientist* | Salary ~270K  
+- **Data Analyst** | Sector: *Healthcare* | Role: *Data Scientist* | Salary ~347K  
+- **Business Analyst** | Sector: *Healthcare* | Role: *Data Business Analyst* | Salary ~276K  
+ 
+Here, the user explicitly mentioned the **Healthcare domain**. As a result, the system returned **different but related job titles** (*Data Analyst, Business Analyst*) all within the **Healthcare sector**.
+
+
+### 5. Evaluation
+
+We tested the engine on **9,496 samples** to measure accuracy and response time.
+
+**Summary Metrics**
+| Metric               | Score         |
+|-----------------------|--------------|
+| **Top-1 Accuracy**    | 82.3%        |
+| **Top-3 Accuracy**    | 92.8%        |
+| **Average Query Time**| 0.11 seconds (~110 ms) |
+| **Median Query Time** | 0.10 seconds (~101 ms) |
+| **Worst-case Latency**| 0.41 seconds (~415 ms) |
+
+**Detailed Results**
+
+| Success Top-1 | Failed Top-1 | Top-1 Accuracy | Success Top-3 | Failed Top-3 | Top-3 Accuracy | Avg Query Time (s) | Median Query Time (s) | Max Query Time (s) | Min Query Time (s) |
+|---------------|--------------|----------------|---------------|--------------|----------------|---------------------|-----------------------|---------------------|---------------------|
+| 7816          | 1680         | 0.8231         | 8814          | 682          | 0.9282         | 0.1099              | 0.1012                | 0.4150              | 0.0846              |
+
+
+The system achieves **high accuracy** while maintaining **near real-time inference speed**, making it suitable for production deployment.
+
+**Note:**
+
+- Accuracy at *k=3* is higher than *k=1* because allowing the top-3 results gives more flexibility even if the best match is ranked 2nd or 3rd, it is still counted as correct.
+
+This reduces the penalty of small ranking variations and better reflects the system’s usefulness to end-users.
+
+### 6. Saving for Inference
+
+To avoid recomputing embeddings during query time, we saved both:
+
+- **Job embeddings** → `job_embeddings.npy`  
+- **Index-to-row mapping** → `enc_order.npy`  
+
+```python
+np.save("job_embeddings.npy", job_embeddings)
+np.save("enc_order.npy", enc_order)
+```
 
 
 
