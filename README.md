@@ -3,7 +3,7 @@
 
 - [Project Idea & Motivation](#project-idea--motivation)
 - [System Architecture](#system-architecture)
-- [Data Description & Preparation Pipeline](#data-description--preparation-pipeline)
+- [Data Description & Preprocessing Pipeline](#data-description--preprocessing-pipeline)
 - [Recommendation Engine](#recommendation-engine)
 - [Database & APIs](#database--apis)
 - [Flutter Mobile Application](#flutter-mobile-application)
