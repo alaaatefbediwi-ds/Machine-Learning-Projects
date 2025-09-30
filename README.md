@@ -295,7 +295,7 @@ np.save("enc_order.npy", enc_order)
 
 ## Business Plan & Sustainability
 
-### Key Features
+### 1. Key Features
 
 #### Implemented in Current Version
 1. **Skill-to-Career Matcher** – Links students’ existing skills to relevant future job opportunities.  
@@ -308,7 +308,7 @@ np.save("enc_order.npy", enc_order)
 6. **Future Job Trends Explorer** – Insights into in-demand and declining careers.  
 7. **IQ & Critical Thinking Hub** – Puzzles, logic challenges, and problem-solving exercises.  
 
-### How Users Will Use the Solution?
+### 2. How Users Will Use the Solution?
 
 #### Current Flow
 1. **Quick Quiz & Recommendations**  
@@ -324,7 +324,7 @@ np.save("enc_order.npy", enc_order)
 - Participate in **Career Simulations** and connect with **mentors**.  
 - Solve **IQ puzzles & critical thinking challenges** to sharpen problem-solving.  
 
-### Sustainability & Monetization  
+### 3. Sustainability & Monetization  
 
 We follow a **freemium model** to ensure accessibility while allowing long-term sustainability.  
 
@@ -343,6 +343,22 @@ We follow a **freemium model** to ensure accessibility while allowing long-term 
 - **Premium Subscriptions (Future)** → Unlock simulations, mentorship, and advanced features.  
 
 This ensures the platform is already **useful today** with AI-driven recommendations, while maintaining a **clear roadmap for future expansion** toward a complete career guidance ecosystem.  
+
+## Future Work / Next Steps
+
+While the current version focuses on **Skill-to-Career Matcher** and **AI-powered Career Recommendations**, we have a clear roadmap to expand the platform into a full-featured career guidance ecosystem.  
+
+### 1. Planned Enhancements
+- **Jobs Library** → Short videos, responsibilities, and salary insights for each career.  
+- **Career Simulations & Virtual Try-Outs** → Let students experience jobs in an interactive way.  
+- **Gamified Career Discovery** → Quizzes and interactive challenges to make exploration engaging.  
+- **Future Job Trends Explorer** → Insights into in-demand and declining careers.  
+- **IQ & Critical Thinking Hub** → Logic puzzles and problem-solving scenarios.  
+- **Mentorship Sessions (Premium)** → Connect students directly with professionals for real-world advice.  
+
+### 2. Vision
+
+Our long-term goal is to provide **end-to-end career guidance** for students from initial exploration and self-discovery, through interactive learning and mentorship, to prepare them for the most relevant future jobs.  
  
 
 ## Contributors 
