@@ -192,8 +192,8 @@ The following diagram illustrates the steps of the recommendation engine:
 1. **User Query** → The user inputs a job-related query.  
 2. **Encoding** → Query is transformed into embeddings using Sentence-BERT.  
 3. **FAISS Search** → The system searches for the most similar job embeddings.  
-4. **Retrieve Top-k Jobs** → Returns the most relevant job titles (e.g., Top-3).  
-5. **Display Results** → Recommendations are shown with job title, role, sector, salary, etc.  
+4. **Retrieve Top-k Jobs** → Returns the most relevant job titles (Top-3).  
+5. **Display Results** → Recommendations are shown with job title, role, sector, salary, job description and job responsibilities.  
 
 
 ### 2. Embedding Generation
