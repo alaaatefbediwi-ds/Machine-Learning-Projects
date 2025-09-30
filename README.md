@@ -370,8 +370,7 @@ The main goal is to understand their background, interests, and preferences so w
   **Purpose:** Capture the user’s vision of their future career and use it as input for tailored suggestions.  
 
 ### User Profile 
-![<img width="4007" height="3270" alt="profile" src="https://github.com/user-attachments/assets/9bafcefa-0220-477a-866b-5bb6996f050e" />]
-
+![<img width="3267" height="3270" alt="profile" src="https://github.com/user-attachments/assets/8a3c1dc3-6882-4ba7-9661-16bd6b1f52bb" />]
 ####  Account Settings
 - From the navigation, the user can open Account Settings.  
 - Options available:  
@@ -384,18 +383,8 @@ The main goal is to understand their background, interests, and preferences so w
 - The profile displays user details:  
   - Education (e.g., Preparatory School Student)  
   - Experience (e.g., school projects, coding activities)  
-  - Skills (coding, problem-solving, creativity, teamwork)  
-
-
-#### Side Menu
-- A slide-out menu gives quick insights and actions:  
-  - 22 profile views  
-  - 10 recommended jobs  
-  - 5 saved posts  
-  - Settings  
-  - Log out
- 
-### Home Page
+  - Skills (coding, problem-solving, creativity, teamwork)
+#### Home Page
 After finishing the onboarding, the user is directed to the Home Screen.
 
 ![<img width="454" height="912" alt="home" src="https://github.com/user-attachments/assets/39d7299b-5df7-40cc-97be-d9520366f184" />]
