@@ -294,5 +294,11 @@ np.save("enc_order.npy", enc_order)
 ```
 
 
+## Contributors 
 
+**InnoMinds Team**
+- [Alaa Atef Abdelhaleem](https://www.linkedin.com/in/alaa-atef-587421285/)
+- [Mohamed Ahmed Hamdy](https://www.linkedin.com/in/mohamed-ahmed-hamdy-9b8722272/)
+- [Mirna Tarek Abdelaziz](https://www.linkedin.com/in/mirna-tarek/)
+- [Doaa Khamis](https://www.linkedin.com/in/doaa-khamis-a04533182/)
 
