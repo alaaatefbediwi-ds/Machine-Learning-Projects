@@ -175,26 +175,12 @@ So, we followed some steps:
 **Result:** A clean, well-structured dataset ready for **embedding generation** and recommendation engine training.  
 
 
-## System Architecture
-
-The system is designed as an end-to-end pipeline that connects users with AI-powered career recommendations in near real-time.
-
-  - **Frontend (Flutter App / Web Interface):** Handles user interactions such as entering queries or skills.
-
-  - **Backend API (Flask/FastAPI):** Processes requests and communicates with the recommendation engine.
-
-  - **Recommendation Engine:** Encodes queries using Sentence-BERT and searches for the most similar job embeddings using FAISS.
-
-  - **FAISS Index:** Optimized similarity search that retrieves top-k job matches.
-
-  - **Database:** Stores job postings, embeddings, and metadata for efficient querying.
-
-  - **Results:** Top-k job recommendations (job title, role, sector, salary, responsibilities) are returned to the user.
+## System Architecture  
 
 ```mermaid
 flowchart LR
-    A[User (Student)] --> B[Frontend (Flutter App / Web Interface)]
-    B --> C[Backend API (Flask/FastAPI)]
+    A[User / Student] --> B[Frontend: Flutter App or Web]
+    B --> C[Backend API: Flask or FastAPI]
     C --> D[Recommendation Engine]
     D --> E[Sentence-BERT Embeddings]
     E --> F[FAISS Index Search]
@@ -203,7 +189,9 @@ flowchart LR
     
     C --> I[(Database)]
     I --> D
-```
+
+
+
 
 
 ## Recommendation Engine
