@@ -187,6 +187,16 @@ Users can input queries describing their **skills, interests, or target careers*
 
 The following diagram illustrates the steps of the recommendation engine:
 
+```mermaid
+flowchart LR
+    A[User Query] --> B[Sentence-BERT Encoding]
+    B --> C[FAISS Index Search]
+    C --> D[Retrieve Top-k Jobs]
+    D --> E[Display Results: 
+    Job Title, Role, Sector, Salary, 
+    Job Description, Responsibilities]
+
+
 ![Recommendation Engine Workflow](./assets/recommendation_engine_workflow.png)
 
 1. **User Query** → The user inputs a job-related query.  
