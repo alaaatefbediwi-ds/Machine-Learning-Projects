@@ -183,9 +183,20 @@ Our project includes a **Skill-to-Career Matcher** recommendation engine.
 
 Users can input queries describing their **skills, interests, or target careers**, and the engine recommends **top-3 most relevant jobs** based on semantic similarity and industry context.  
 
+### 1. Recommendation Engine Workflow
+
+The following diagram illustrates the steps of the recommendation engine:
+
+![Recommendation Engine Workflow](./assets/recommendation_engine_workflow.png)
+
+1. **User Query** → The user inputs a job-related query.  
+2. **Encoding** → Query is transformed into embeddings using Sentence-BERT.  
+3. **FAISS Search** → The system searches for the most similar job embeddings.  
+4. **Retrieve Top-k Jobs** → Returns the most relevant job titles (e.g., Top-3).  
+5. **Display Results** → Recommendations are shown with job title, role, sector, salary, etc.  
 
 
-### 1. Embedding Generation
+### 2. Embedding Generation
 
 - Used **Sentence Transformers** with `multi-qa-mpnet-base-dot-v1`, a retrieval-optimized model.  
 - Encoded the cleaned text representation (`job_text_clean`) of each job posting into dense embeddings.  
@@ -202,14 +213,14 @@ job_embeddings = model.encode(
 ```
 **Result:** Each job posting is represented as a **768-dimensional vector**.
 
-### 2. Building FAISS Index
+### 3. Building FAISS Index
 
 - Used FAISS (Facebook AI Similarity Search) for efficient nearest-neighbor retrieval.
 - Stored all embeddings in a flat L2 index.
 
 **Result:** Fast similarity search enabled for **~9.5K job postings**.
 
-### 3. Prediction Function
+### 4. Prediction Function
 
 Implemented a `predict_top_3(query)` function:
 
@@ -220,7 +231,7 @@ Implemented a `predict_top_3(query)` function:
   - Returns `Job Title`, `Sector`, `Role`, `Aggregated Salary`, `Job Description`, `Responsibilities` and `Distance Score`.
 
 
-### 4. Example Queries
+### 5. Example Queries
 
 **Query 1:** *“I like designing buildings and interiors, and I’m creative with spaces”*
 
@@ -242,7 +253,7 @@ Since the query described the **skills of an Architectural Designer in general**
 Here, the user explicitly mentioned the **Healthcare domain**. As a result, the system returned **different but related job titles** (*Data Analyst, Business Analyst*) all within the **Healthcare sector**.
 
 
-### 5. Evaluation
+### 6. Evaluation
 
 We tested the engine on **9,496 samples** to measure accuracy and response time.
 
@@ -270,7 +281,7 @@ The system achieves **high accuracy** while maintaining **near real-time inferen
 
 This reduces the penalty of small ranking variations and better reflects the system’s usefulness to end-users.
 
-### 6. Saving for Inference
+### 7. Saving for Inference
 
 To avoid recomputing embeddings during query time, we saved both:
 
